@@ -1,0 +1,17 @@
+RewriteEngine on
+
+# Redirect if http
+RewriteCond %{HTTPS} off
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# set header if https
+# Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+Header set Strict-Transport-Security "max-age=31536000" env=HTTPS
+
+RewriteRule ^/?$ index.html
+
+RewriteRule ^index/?$ index.html
+RewriteRule ^contact/?$ contact.html
+RewriteRule ^portfolio/?$ portfolio.html
+RewriteRule ^service/?$ service.html
+RewriteRule ^single/?$ single.html
+RewriteRule ^about/?$ about.html
